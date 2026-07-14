@@ -122,12 +122,11 @@
         .balance-main-row { display: flex; justify-content: space-between; align-items: center; margin: 8px 0 16px; gap: 10px; }
         .balance-value { color: var(--primary); font-size: 32px; font-weight: 800; }
         .balance-divider { border: 0; border-top: 1px solid var(--border); margin-bottom: 14px; }
-        .balance-footer-row { display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 16px; }
-        .footer-item { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; }
-        .footer-icon-circle { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; background: #E2F5E8; color: #3DAE6B; }
-        .footer-text-block { min-width: 0; flex: 1; }
-        .footer-sub-label { color: var(--text-muted); font-size: 11.5px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; }
-        .footer-sub-value { color: #1C1C1C; font-size: 14px; font-weight: 700; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; }
+        .balance-footer-row { display: flex; align-items: stretch; width: 100%; }
+        .footer-item { display: flex; flex-direction: column; flex: 1; min-width: 0; padding: 0 6px; }
+        .footer-item + .footer-item { border-left: 1px solid var(--border); }
+        .footer-sub-label { color: var(--text-muted); font-size: 11.5px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .footer-sub-value { color: #1C1C1C; font-size: 15px; font-weight: 700; margin-top: 2px; white-space: nowrap; }
 
         /* --- MENU DE NAVEGAÇÃO --- */
         .nav-bar-container { background: #DCEEE1; margin: 0 20px 20px; border-radius: 22px; padding: 14px 6px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 8px 20px rgba(4, 106, 56, 0.08); }
@@ -326,28 +325,22 @@
                 <hr class="balance-divider">
                 <div class="balance-footer-row">
                     <div class="footer-item">
-                        <div class="footer-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ico-svg"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></div>
-                        <div class="footer-text-block">
-                            <div class="footer-sub-label">Total em Despesas</div>
-                            <div class="footer-sub-value" id="lbl-despesas-total">R$ 0,00</div>
-                        </div>
+                        <div class="footer-sub-label">Total em Despesas</div>
+                        <div class="footer-sub-value" id="lbl-despesas-total">R$ 0,00</div>
                     </div>
                     <div class="footer-item">
-                        <div class="footer-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ico-svg"><path d="M21 12V8a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h16v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7"/><circle cx="17" cy="12.5" r="1.3"/></svg></div>
-                        <div class="footer-text-block">
-                            <div class="footer-sub-label">Restante a Pagar</div>
-                            <div class="footer-sub-value" id="lbl-restante">R$ 0,00</div>
-                        </div>
+                        <div class="footer-sub-label">Restante a Pagar</div>
+                        <div class="footer-sub-value" id="lbl-restante">R$ 0,00</div>
                     </div>
                 </div>
             </div>
 
             <div class="nav-bar-container">
                 <button class="nav-btn" data-screen="home" onclick="navigate('home')"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ico-svg"><path d="M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V9.5Z"/></svg></i>Home<span class="nav-dot"></span></button>
-                <button class="nav-btn add-money" onclick="openModal('modal-receita')"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ico-svg"><path d="M12 5v14M5 12h14"/></svg></i>Receita</button>
-                <button class="nav-btn add-expense" onclick="openModal('modal-despesa')"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ico-svg"><path d="M5 12h14"/></svg></i>Despesa</button>
+                <button class="nav-btn add-money" onclick="openModal('modal-receita')"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ico-svg"><path d="M12 5v14M5 12h14"/></svg></i>Receita<span class="nav-dot"></span></button>
+                <button class="nav-btn add-expense" onclick="openModal('modal-despesa')"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ico-svg"><path d="M5 12h14"/></svg></i>Despesa<span class="nav-dot"></span></button>
                 <button class="nav-btn" data-screen="resumo" onclick="navigate('resumo')"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ico-svg"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg></i>Resumo<span class="nav-dot"></span></button>
-                <button class="nav-btn" onclick="handleLogout()"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ico-svg"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg></i>Sair</button>
+                <button class="nav-btn" onclick="handleLogout()"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ico-svg"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg></i>Sair<span class="nav-dot"></span></button>
             </div>
 
             <div class="month-selector">
@@ -375,10 +368,10 @@
         
         <div class="nav-bar-container" style="margin-top:5px;">
             <button class="nav-btn" data-screen="home" onclick="navigate('home')"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ico-svg"><path d="M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V9.5Z"/></svg></i>Home<span class="nav-dot"></span></button>
-            <button class="nav-btn add-money" onclick="openModal('modal-receita')"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ico-svg"><path d="M12 5v14M5 12h14"/></svg></i>Receita</button>
-            <button class="nav-btn add-expense" onclick="openModal('modal-despesa')"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ico-svg"><path d="M5 12h14"/></svg></i>Despesa</button>
+            <button class="nav-btn add-money" onclick="openModal('modal-receita')"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ico-svg"><path d="M12 5v14M5 12h14"/></svg></i>Receita<span class="nav-dot"></span></button>
+            <button class="nav-btn add-expense" onclick="openModal('modal-despesa')"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ico-svg"><path d="M5 12h14"/></svg></i>Despesa<span class="nav-dot"></span></button>
             <button class="nav-btn" data-screen="resumo" onclick="navigate('resumo')"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ico-svg"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg></i>Resumo<span class="nav-dot"></span></button>
-            <button class="nav-btn" onclick="handleLogout()"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ico-svg"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg></i>Sair</button>
+            <button class="nav-btn" onclick="handleLogout()"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ico-svg"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg></i>Sair<span class="nav-dot"></span></button>
         </div>
     </div>
 
